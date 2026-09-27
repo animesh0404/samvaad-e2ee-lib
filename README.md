@@ -29,6 +29,66 @@ version  = 0.1.0
 implementation 'com.samvaad:e2ee-client:0.1.0'
 ```
 
+## Packages
+
+Published artifacts live on GitHub Packages (Maven repository):
+
+```text
+https://maven.pkg.github.com/animesh0404/samvaad-e2ee-lib
+```
+
+See ADR 0002 for why GitHub Packages is used instead of Maven Central.
+
+### How maintainers publish
+
+Publication is release-driven; nothing is published on push.
+
+1. Merge the change to `main` and verify `./gradlew clean test` is green.
+2. Create an explicit GitHub Release (tag the version being released).
+3. The `Publish to GitHub Packages` workflow (`.github/workflows/publish.yml`)
+   runs the full test suite and then publishes `com.samvaad:e2ee-client`
+   using the repository-provided `GITHUB_TOKEN`.
+4. Verify the package appears under the repository's Packages page.
+
+Do not publish from a local machine: local publication is for
+configuration validation only (`publishToMavenLocal`, POM inspection),
+never for releasing `0.1.0` or any other version.
+
+### How consumers configure it
+
+GitHub Packages requires authentication even for reads. Consumers add the
+repository with environment-based credentials (never hardcoded tokens):
+
+```groovy
+repositories {
+    mavenCentral()
+    maven {
+        url = uri('https://maven.pkg.github.com/animesh0404/samvaad-e2ee-lib')
+        credentials {
+            username = System.getenv('GITHUB_ACTOR')
+            password = System.getenv('GITHUB_TOKEN')
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.samvaad:e2ee-client:0.1.0'
+}
+```
+
+Provide any GitHub username as `GITHUB_ACTOR` and a personal access token
+(with `read:packages` scope) as `GITHUB_TOKEN`. In GitHub Actions,
+`GITHUB_TOKEN` works as-is.
+
+### Composite build status
+
+Local `samvaad-server` / `samvaad-tui` checkouts still resolve
+`com.samvaad:e2ee-client:0.1.0` through a Gradle composite build
+(`includeBuild` with an explicit dependency-substitution rule) until their
+migration to the published package is completed. The composite build and
+the GitHub Packages publication share the same frozen coordinate, so the
+migration is a repository-resolution change, not a code change.
+
 ## Architecture
 
 Crypto operations flow through a Samvaad-owned seam, so only one class ever
@@ -103,9 +163,10 @@ Implementations assume single-process ownership.
   controllers, or configuration from `samvaad-server`.
 - Owns client-side crypto persistence formats (`STORE_FORMAT_VERSION = 1`;
   a bump requires a migration path) and all client-side cryptographic state.
-- Is consumed by Samvaad JVM applications through the coordinates above
-  (local development may resolve them via a Gradle composite build; no
-  published artifact is required for that).
+- Is consumed by Samvaad JVM applications through the coordinates above:
+  released versions resolve from GitHub Packages (see Packages above),
+  while local `samvaad-server` / `samvaad-tui` checkouts still resolve
+  them via a Gradle composite build until migration is completed.
 - Test doubles (`fake/FakeSignalAdapter`, `fake/InMemoryStores`) live under
   `src/test` and are not shipped in the library jar.
 

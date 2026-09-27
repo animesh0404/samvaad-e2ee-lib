@@ -14,3 +14,4 @@ is understandable on its own.
 | ADR | Decision |
 | --- | --- |
 | [0001](0001-standalone-e2ee-client-library.md) | Standalone reusable JVM E2EE client library |
+| [0002](0002-github-packages-publication.md) | Publish to GitHub Packages instead of Maven Central |

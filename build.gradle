@@ -1,5 +1,6 @@
 plugins {
     id 'java-library'
+    id 'maven-publish'
 }
 
 group = 'com.samvaad'
@@ -12,8 +13,9 @@ version = '0.1.0'
 // does not map `com.samvaad:e2ee-client` to this build; consumers use an
 // explicit rule (see `substitute(module('com.samvaad:e2ee-client'))` in
 // `samvaad-server/server/settings.gradle`). `base.archivesName` only keeps
-// the built jar (`e2ee-client-0.1.0.jar`) and any future Maven publication
-// artifactId on the frozen coordinate.
+// the built jar (`e2ee-client-0.1.0.jar`) on the frozen coordinate; the
+// published Maven artifactId is pinned explicitly in the `e2eeClient`
+// publication below (it defaults to the project name otherwise).
 base {
     archivesName = 'e2ee-client'
 }
@@ -48,4 +50,56 @@ tasks.withType(JavaCompile).configureEach {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+// GitHub Packages publication (ADR 0002). Publishes the frozen coordinate
+// `com.samvaad:e2ee-client:0.1.0` to
+// `https://maven.pkg.github.com/animesh0404/samvaad-e2ee-lib`.
+// `artifactId` is pinned explicitly because the Gradle project name
+// (`samvaad-e2ee-lib`) intentionally differs from the Maven artifact.
+// Credentials come only from the environment (`GITHUB_ACTOR` /
+// `GITHUB_TOKEN`); no token is ever hardcoded. Publication itself runs in
+// GitHub Actions on an explicit GitHub Release (see
+// `.github/workflows/publish.yml`), never automatically on push.
+publishing {
+    publications {
+        e2eeClient(MavenPublication) {
+            from components.java
+            groupId = 'com.samvaad'
+            artifactId = 'e2ee-client'
+            version = '0.1.0'
+            pom {
+                name = 'Samvaad E2EE client library'
+                description = 'Reusable JVM client-side end-to-end encryption (E2EE) implementation for Samvaad V1 one-to-one messaging.'
+                url = 'https://github.com/animesh0404/samvaad-e2ee-lib'
+                licenses {
+                    license {
+                        name = 'GNU Affero General Public License v3.0 only'
+                        url = 'https://www.gnu.org/licenses/agpl-3.0.html'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'animesh0404'
+                        name = 'Animesh Kahara'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git://github.com/animesh0404/samvaad-e2ee-lib.git'
+                    developerConnection = 'scm:git:ssh://github.com/animesh0404/samvaad-e2ee-lib.git'
+                    url = 'https://github.com/animesh0404/samvaad-e2ee-lib'
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            name = 'GitHubPackages'
+            url = uri('https://maven.pkg.github.com/animesh0404/samvaad-e2ee-lib')
+            credentials {
+                username = System.getenv('GITHUB_ACTOR')
+                password = System.getenv('GITHUB_TOKEN')
+            }
+        }
+    }
 }
