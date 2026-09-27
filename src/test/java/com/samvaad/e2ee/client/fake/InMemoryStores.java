@@ -1,3 +1,6 @@
+// Copyright (C) 2026 Animesh Kahara
+// SPDX-License-Identifier: AGPL-3.0-only
+
 package com.samvaad.e2ee.client.fake;
 
 import com.samvaad.e2ee.client.CryptoTypes;

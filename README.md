@@ -111,3 +111,26 @@ Implementations assume single-process ownership.
 
 See `docs/adr/README.md` for the architectural decisions behind this
 boundary.
+
+## License
+
+Copyright (C) 2026 Animesh Kahara.
+
+This library is free software: you can redistribute it and/or modify it
+under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, version 3 only (no "or later" provision).
+See the root `LICENSE` file for the full text. Each source file carries
+an `SPDX-License-Identifier: AGPL-3.0-only` header.
+
+## Third-party dependencies
+
+- `org.signal:libsignal-client:0.86.5` — Copyright Signal Messenger, LLC,
+  licensed under AGPL-3.0-only
+  (`https://github.com/signalapp/libsignal`). The library links it
+  behind the `SignalAdapter` seam; no Signal source is vendored in this
+  repository and Signal's own copyright/license notices ship untouched
+  inside the upstream artifact.
+- `org.jetbrains.kotlin:kotlin-stdlib`,
+  `org.jetbrains.kotlinx:kotlinx-coroutines-core`,
+  `org.jetbrains:annotations` (transitive via libsignal) — Apache
+  License 2.0.
