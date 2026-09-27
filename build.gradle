@@ -6,11 +6,13 @@ group = 'com.samvaad'
 version = '0.1.0'
 
 // The repository/root project is named `samvaad-e2ee-lib`, but the library
-// module identity stays `com.samvaad:e2ee-client`. Composite-build
-// dependency substitution matches on group + archives base name, so this
-// lets consumers declare `com.samvaad:e2ee-client:0.1.0` with a plain
-// `includeBuild` and no consumer-side substitution rule. It also keeps the
-// built jar (`e2ee-client-0.1.0.jar`) and any future Maven publication
+// coordinates stay `com.samvaad:e2ee-client:0.1.0`. Composite-build
+// dependency substitution matches on the module/project identity (group +
+// project name), not on `base.archivesName`, so the default substitution
+// does not map `com.samvaad:e2ee-client` to this build; consumers use an
+// explicit rule (see `substitute(module('com.samvaad:e2ee-client'))` in
+// `samvaad-server/server/settings.gradle`). `base.archivesName` only keeps
+// the built jar (`e2ee-client-0.1.0.jar`) and any future Maven publication
 // artifactId on the frozen coordinate.
 base {
     archivesName = 'e2ee-client'
