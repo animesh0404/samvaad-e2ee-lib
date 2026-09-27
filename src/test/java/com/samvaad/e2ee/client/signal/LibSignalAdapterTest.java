@@ -1,4 +1,4 @@
-package com.samvaad.samvaad_server.e2ee.client.signal;
+package com.samvaad.e2ee.client.signal;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,8 +14,8 @@ import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
 
-import com.samvaad.samvaad_server.e2ee.client.CryptoException;
-import com.samvaad.samvaad_server.e2ee.client.SignalAdapter;
+import com.samvaad.e2ee.client.CryptoException;
+import com.samvaad.e2ee.client.SignalAdapter;
 
 /**
  * Unit coverage for the real libsignal adapter: canonical identity keys,
@@ -197,8 +197,8 @@ class LibSignalAdapterTest {
                         null, kyber)));
 
         // Missing Kyber triple: the library mandates it.
-        com.samvaad.samvaad_server.e2ee.client.CryptoTypes.RecipientBundle noKyber =
-                new com.samvaad.samvaad_server.e2ee.client.CryptoTypes.RecipientBundle(device, user, 1,
+        com.samvaad.e2ee.client.CryptoTypes.RecipientBundle noKyber =
+                new com.samvaad.e2ee.client.CryptoTypes.RecipientBundle(device, user, 1,
                         1001, identity.identityPublicKey(), 11, signed.publicKey(), signed.signature(),
                         null, null, null, null, null);
         assertThrows(CryptoException.ClaimFailedException.class,
@@ -233,11 +233,11 @@ class LibSignalAdapterTest {
     }
 
     /** Bundle builder over real adapter outputs (null OTPK pair = fallback). */
-    static com.samvaad.samvaad_server.e2ee.client.CryptoTypes.RecipientBundle bundle(
+    static com.samvaad.e2ee.client.CryptoTypes.RecipientBundle bundle(
             UUID device, UUID user, byte[] identity, byte[] spk, byte[] spkSig,
             SignalAdapter.OneTimePrekeyPair otp,
             SignalAdapter.KyberPrekeyPair kyber) {
-        return new com.samvaad.samvaad_server.e2ee.client.CryptoTypes.RecipientBundle(device, user, 1,
+        return new com.samvaad.e2ee.client.CryptoTypes.RecipientBundle(device, user, 1,
                 1002, identity, 11, spk, spkSig,
                 otp == null ? null : otp.prekeyId(), otp == null ? null : otp.publicKey(),
                 kyber.prekeyId(), kyber.publicKey(), kyber.signature());

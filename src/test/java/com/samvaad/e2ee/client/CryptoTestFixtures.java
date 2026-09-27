@@ -1,7 +1,7 @@
-package com.samvaad.samvaad_server.e2ee.client;
+package com.samvaad.e2ee.client;
 
-import com.samvaad.samvaad_server.e2ee.client.fake.FakeSignalAdapter;
-import com.samvaad.samvaad_server.e2ee.client.fake.InMemoryStores;
+import com.samvaad.e2ee.client.fake.FakeSignalAdapter;
+import com.samvaad.e2ee.client.fake.InMemoryStores;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;

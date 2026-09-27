@@ -1,4 +1,4 @@
-package com.samvaad.samvaad_server.e2ee.client;
+package com.samvaad.e2ee.client;
 
 /**
  * Crypto error taxonomy. All failures are explicit so callers can distinguish

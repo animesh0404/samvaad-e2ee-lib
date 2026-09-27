@@ -1,6 +1,6 @@
-package com.samvaad.samvaad_server.e2ee.client.signal;
+package com.samvaad.e2ee.client.signal;
 
-import com.samvaad.samvaad_server.e2ee.client.PersistentStoreException;
+import com.samvaad.e2ee.client.PersistentStoreException;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;

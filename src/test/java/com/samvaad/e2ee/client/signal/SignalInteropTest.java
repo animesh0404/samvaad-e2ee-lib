@@ -1,4 +1,4 @@
-package com.samvaad.samvaad_server.e2ee.client.signal;
+package com.samvaad.e2ee.client.signal;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,9 +18,9 @@ import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
 
-import com.samvaad.samvaad_server.e2ee.client.CryptoException;
-import com.samvaad.samvaad_server.e2ee.client.CryptoTypes;
-import com.samvaad.samvaad_server.e2ee.client.SignalAdapter;
+import com.samvaad.e2ee.client.CryptoException;
+import com.samvaad.e2ee.client.CryptoTypes;
+import com.samvaad.e2ee.client.SignalAdapter;
 
 /**
  * Real two-device JVM interoperability proof with libsignal on both sides

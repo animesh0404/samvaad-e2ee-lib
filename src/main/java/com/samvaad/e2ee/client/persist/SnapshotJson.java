@@ -1,4 +1,4 @@
-package com.samvaad.samvaad_server.e2ee.client.persist;
+package com.samvaad.e2ee.client.persist;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

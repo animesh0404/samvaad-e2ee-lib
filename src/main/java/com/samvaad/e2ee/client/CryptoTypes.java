@@ -1,4 +1,4 @@
-package com.samvaad.samvaad_server.e2ee.client;
+package com.samvaad.e2ee.client;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;

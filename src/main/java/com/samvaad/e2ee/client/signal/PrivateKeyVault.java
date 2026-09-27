@@ -1,4 +1,4 @@
-package com.samvaad.samvaad_server.e2ee.client.signal;
+package com.samvaad.e2ee.client.signal;
 
 import java.util.Set;
 import java.util.UUID;

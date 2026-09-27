@@ -1,8 +1,8 @@
-package com.samvaad.samvaad_server.e2ee.client.fake;
+package com.samvaad.e2ee.client.fake;
 
-import com.samvaad.samvaad_server.e2ee.client.CryptoException;
-import com.samvaad.samvaad_server.e2ee.client.CryptoTypes;
-import com.samvaad.samvaad_server.e2ee.client.SignalAdapter;
+import com.samvaad.e2ee.client.CryptoException;
+import com.samvaad.e2ee.client.CryptoTypes;
+import com.samvaad.e2ee.client.SignalAdapter;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;

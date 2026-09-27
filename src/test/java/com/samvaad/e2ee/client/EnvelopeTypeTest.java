@@ -1,4 +1,4 @@
-package com.samvaad.samvaad_server.e2ee.client;
+package com.samvaad.e2ee.client;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

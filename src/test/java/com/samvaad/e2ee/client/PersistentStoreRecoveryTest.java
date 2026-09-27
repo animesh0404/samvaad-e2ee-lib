@@ -1,4 +1,4 @@
-package com.samvaad.samvaad_server.e2ee.client;
+package com.samvaad.e2ee.client;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -17,8 +17,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-import com.samvaad.samvaad_server.e2ee.client.fake.FakeSignalAdapter;
-import com.samvaad.samvaad_server.e2ee.client.persist.FileBackedClientCryptoStore;
+import com.samvaad.e2ee.client.fake.FakeSignalAdapter;
+import com.samvaad.e2ee.client.persist.FileBackedClientCryptoStore;
 
 /**
  * Production persistence semantics of the {@link ClientCryptoStore}

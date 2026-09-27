@@ -1,4 +1,4 @@
-package com.samvaad.samvaad_server.e2ee.client;
+package com.samvaad.e2ee.client;
 
 /**
  * Unified durability owner for all client-side E2EE crypto state.

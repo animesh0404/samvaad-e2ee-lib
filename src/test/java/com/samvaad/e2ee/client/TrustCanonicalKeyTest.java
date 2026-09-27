@@ -1,4 +1,4 @@
-package com.samvaad.samvaad_server.e2ee.client;
+package com.samvaad.e2ee.client;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.jupiter.api.Test;
 
-import com.samvaad.samvaad_server.e2ee.client.fake.FakeSignalAdapter;
+import com.samvaad.e2ee.client.fake.FakeSignalAdapter;
 
 /**
  * Trust is decided by byte-equality on the canonical identity public key

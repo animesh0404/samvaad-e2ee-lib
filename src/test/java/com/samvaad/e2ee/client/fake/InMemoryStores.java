@@ -1,11 +1,11 @@
-package com.samvaad.samvaad_server.e2ee.client.fake;
+package com.samvaad.e2ee.client.fake;
 
-import com.samvaad.samvaad_server.e2ee.client.CryptoTypes;
-import com.samvaad.samvaad_server.e2ee.client.DeviceKeyStore;
-import com.samvaad.samvaad_server.e2ee.client.PrekeyManager;
-import com.samvaad.samvaad_server.e2ee.client.SessionStore;
-import com.samvaad.samvaad_server.e2ee.client.SignalAdapter;
-import com.samvaad.samvaad_server.e2ee.client.TrustStore;
+import com.samvaad.e2ee.client.CryptoTypes;
+import com.samvaad.e2ee.client.DeviceKeyStore;
+import com.samvaad.e2ee.client.PrekeyManager;
+import com.samvaad.e2ee.client.SessionStore;
+import com.samvaad.e2ee.client.SignalAdapter;
+import com.samvaad.e2ee.client.TrustStore;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -217,14 +217,14 @@ public final class InMemoryStores {
     }
 
     /**
-     * Unified in-memory {@link com.samvaad.samvaad_server.e2ee.client.ClientCryptoStore}
+     * Unified in-memory {@link com.samvaad.e2ee.client.ClientCryptoStore}
      * composing one of each single-concern store. Single-writer test scope:
      * the two atomic boundaries are serialized on this facade, while direct
      * pokes at the composed views (as tests do) bypass that monitor and are
      * therefore only safe single-threaded.
      */
     public static final class Combined
-            implements com.samvaad.samvaad_server.e2ee.client.ClientCryptoStore {
+            implements com.samvaad.e2ee.client.ClientCryptoStore {
         private final DeviceKeys keys;
         private final Sessions sessions;
         private final Trust trust;

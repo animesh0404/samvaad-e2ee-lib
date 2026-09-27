@@ -1,4 +1,4 @@
-package com.samvaad.samvaad_server.e2ee.client.signal;
+package com.samvaad.e2ee.client.signal;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,13 +14,13 @@ import java.util.UUID;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-import com.samvaad.samvaad_server.e2ee.client.CryptoException;
-import com.samvaad.samvaad_server.e2ee.client.CryptoTestFixtures;
-import com.samvaad.samvaad_server.e2ee.client.CryptoTypes;
-import com.samvaad.samvaad_server.e2ee.client.SamvaadCryptoService;
-import com.samvaad.samvaad_server.e2ee.client.SamvaadCryptoServiceImpl;
-import com.samvaad.samvaad_server.e2ee.client.SignalAdapter;
-import com.samvaad.samvaad_server.e2ee.client.persist.FileBackedClientCryptoStore;
+import com.samvaad.e2ee.client.CryptoException;
+import com.samvaad.e2ee.client.CryptoTestFixtures;
+import com.samvaad.e2ee.client.CryptoTypes;
+import com.samvaad.e2ee.client.SamvaadCryptoService;
+import com.samvaad.e2ee.client.SamvaadCryptoServiceImpl;
+import com.samvaad.e2ee.client.SignalAdapter;
+import com.samvaad.e2ee.client.persist.FileBackedClientCryptoStore;
 
 /**
  * Section-14 proof: the real adapter works through

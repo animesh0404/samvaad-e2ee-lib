@@ -1,4 +1,4 @@
-package com.samvaad.samvaad_server.e2ee.client;
+package com.samvaad.e2ee.client;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -9,7 +9,7 @@ import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
 
-import com.samvaad.samvaad_server.e2ee.client.fake.InMemoryStores;
+import com.samvaad.e2ee.client.fake.InMemoryStores;
 
 /** OTPK exhaustion falls back to the signed prekey; replenishment is exact batches. */
 class FallbackReplenishTest {

@@ -1,4 +1,4 @@
-package com.samvaad.samvaad_server.e2ee.client;
+package com.samvaad.e2ee.client;
 
 /**
  * Unchecked failure of the client crypto durability layer: snapshot writes

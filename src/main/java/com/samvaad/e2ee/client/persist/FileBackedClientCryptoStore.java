@@ -1,9 +1,9 @@
-package com.samvaad.samvaad_server.e2ee.client.persist;
+package com.samvaad.e2ee.client.persist;
 
-import com.samvaad.samvaad_server.e2ee.client.ClientCryptoStore;
-import com.samvaad.samvaad_server.e2ee.client.CryptoTypes;
-import com.samvaad.samvaad_server.e2ee.client.PersistentStoreException;
-import com.samvaad.samvaad_server.e2ee.client.SignalAdapter;
+import com.samvaad.e2ee.client.ClientCryptoStore;
+import com.samvaad.e2ee.client.CryptoTypes;
+import com.samvaad.e2ee.client.PersistentStoreException;
+import com.samvaad.e2ee.client.SignalAdapter;
 
 import java.nio.channels.FileChannel;
 import java.nio.charset.StandardCharsets;
